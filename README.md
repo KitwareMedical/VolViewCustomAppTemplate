@@ -9,6 +9,11 @@ This custom app template uses file overrides to customize a webapp built using V
 
 Once everything has been installed, you can look inside `app/` for a sample file override, which updates some configuration keys.
 
+All vite commands are supported:
+- `npm run dev`: run the dev server
+- `npm run build`: build the app
+- `npm run preview`: preview a production-build of the app
+
 ## Override Behavior
 
 File overriding is the primary customization behavior of this template. Files inside the override directory must match the relative file path in the core repository in order to be overridden.
