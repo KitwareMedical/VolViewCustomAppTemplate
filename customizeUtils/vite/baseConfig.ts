@@ -18,7 +18,7 @@ export default defineConfig(async (configEnv) => {
   );
 
   if (!loadResult) throw new Error('Failed to load vite.config.ts from core.')
-  const viteConfig = loadResult?.config;
+  const viteConfig = loadResult.config;
 
   viteConfig.root = CoreDirPath;
   viteConfig.resolve = {
