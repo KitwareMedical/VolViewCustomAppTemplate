@@ -9,7 +9,7 @@ function main() {
   try {
     process.stdout.write(execFileSync("npm", ["install", `${CoreDirPath}/`]));
   } catch (err) {
-    process.stderr.write(err.stderr);
+    process.stderr.write(String(err));
     process.exit(1);
   }
 }
