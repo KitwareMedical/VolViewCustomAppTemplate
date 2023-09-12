@@ -17,7 +17,7 @@ function generateOverrideLookup() {
       })
       .filter((file) => file.isFile())
       .map((file) =>
-        normalizePath(path.relative(OverrideDirPath, file.fullpathPosix()))
+        normalizePath(path.relative(OverrideDirPath, file.fullpath()))
       )
   );
 }
