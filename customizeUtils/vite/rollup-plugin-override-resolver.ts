@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import * as glob from "glob";
-import { PluginOption } from "vite";
+import { PluginOption, normalizePath } from "vite";
 import {
   OverrideDirPath,
   OverrideDirPrefix,
@@ -12,11 +12,13 @@ import {
 function generateOverrideLookup() {
   return new Set(
     glob
-      .sync(path.resolve(ProjectRoot, `${OverrideDirPath}/**/*`), {
+      .sync(path.posix.resolve(ProjectRoot, `${OverrideDirPath}/**/*`), {
         withFileTypes: true,
       })
       .filter((file) => file.isFile())
-      .map((file) => path.relative(OverrideDirPath, file.fullpathPosix()))
+      .map((file) =>
+        normalizePath(path.relative(OverrideDirPath, file.fullpathPosix()))
+      )
   );
 }
 
@@ -40,10 +42,10 @@ export const OverrideResolverPlugin: PluginOption = {
       // if not importing from the core dir, then stop.
       if (!resolution.id.startsWith(CoreDirPrefix)) return resolution;
 
-      const relPath = path.relative(CoreDirPath, resolution.id);
+      const relPath = normalizePath(path.relative(CoreDirPath, resolution.id));
       if (!overrideLookup.has(relPath)) return resolution;
 
-      resolution.id = path.join(OverrideDirPath, relPath);
+      resolution.id = normalizePath(path.join(OverrideDirPath, relPath));
       return resolution;
     },
   },
