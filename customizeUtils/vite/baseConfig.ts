@@ -2,7 +2,7 @@ import * as path from "node:path";
 import { AliasOptions, defineConfig, loadConfigFromFile } from "vite";
 import { mergeAlias } from "vite";
 import { OverrideResolverPlugin } from "./rollup-plugin-override-resolver";
-import { CoreDirPath } from "../common";
+import { CoreDirPath, ProjectRoot } from "../common";
 
 const alias: AliasOptions = [
   {
@@ -21,6 +21,7 @@ export default defineConfig(async (configEnv) => {
   const viteConfig = loadResult.config;
 
   viteConfig.root = CoreDirPath;
+  viteConfig.envDir = ProjectRoot;
   viteConfig.resolve = {
     ...viteConfig.resolve,
     alias: mergeAlias(alias, viteConfig.resolve?.alias),
