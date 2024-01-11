@@ -1,15 +1,7 @@
 import * as path from "node:path";
-import { AliasOptions, defineConfig, loadConfigFromFile } from "vite";
-import { mergeAlias } from "vite";
+import { defineConfig, loadConfigFromFile } from "vite";
 import { OverrideResolverPlugin } from "./rollup-plugin-override-resolver";
 import { CoreDirPath, ProjectRoot } from "../common";
-
-const alias: AliasOptions = [
-  {
-    find: "@core",
-    replacement: CoreDirPath,
-  },
-];
 
 export default defineConfig(async (configEnv) => {
   const loadResult = await loadConfigFromFile(
@@ -22,10 +14,7 @@ export default defineConfig(async (configEnv) => {
 
   viteConfig.root = CoreDirPath;
   viteConfig.envDir = ProjectRoot;
-  viteConfig.resolve = {
-    ...viteConfig.resolve,
-    alias: mergeAlias(alias, viteConfig.resolve?.alias),
-  };
+
   viteConfig.plugins ||= [];
   viteConfig.plugins!.unshift(OverrideResolverPlugin);
 

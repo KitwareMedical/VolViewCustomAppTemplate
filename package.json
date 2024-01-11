@@ -4,9 +4,8 @@
   "description": "",
   "scripts": {
     "update:core": "node ./customizeUtils/bin/updateCore.mjs",
-    "install:core": "node ./customizeUtils/bin/installCore.mjs",
     "sync-config": "node ./customizeUtils/bin/syncConfig.mjs",
-    "postinstall": "npm run update:core && npm run install:core && npm run sync-config && npx patch-package",
+    "preinstall": "npm run update:core && npm run sync-config",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview"
