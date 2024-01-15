@@ -5,7 +5,7 @@ This custom app template uses file overrides to customize a webapp built using V
 ## Getting Started
 
 1. Edit `custom-app.config.js` to configure this custom template. If you are customizing VolView, you can leave it as-is.
-2. Run `npm install` to checkout VolView and configure the project configuration.
+2. Run `npm install && npm run setup-project` to checkout VolView and configure the project configuration.
 
 Once everything has been installed, you can look inside `app/` for a sample file override, which updates some configuration keys.
 

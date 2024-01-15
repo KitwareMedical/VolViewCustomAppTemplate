@@ -5,7 +5,7 @@
   "scripts": {
     "update:core": "node ./customizeUtils/bin/updateCore.mjs",
     "sync-config": "node ./customizeUtils/bin/syncConfig.mjs",
-    "preinstall": "npm run update:core && npm run sync-config",
+    "setup-project": "npm run update:core && npm run sync-config && npm install",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview"
