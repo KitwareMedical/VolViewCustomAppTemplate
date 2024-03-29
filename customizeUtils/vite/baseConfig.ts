@@ -12,11 +12,14 @@ export default defineConfig(async (configEnv) => {
   if (!loadResult) throw new Error('Failed to load vite.config.ts from core.');
   const viteConfig = loadResult.config;
 
-  viteConfig.root = CoreDirPath;
+  viteConfig.root = ProjectRoot;
   viteConfig.envDir = ProjectRoot;
 
+  viteConfig.build ||= {};
+  viteConfig.build.outDir = 'dist';
+
   viteConfig.plugins ||= [];
-  viteConfig.plugins!.unshift(OverrideResolverPlugin);
+  viteConfig.plugins.unshift(OverrideResolverPlugin);
 
   return viteConfig;
 });
