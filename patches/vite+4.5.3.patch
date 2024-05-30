@@ -1,0 +1,21 @@
+diff --git a/node_modules/vite/dist/node/chunks/dep-41cf5ffd.js b/node_modules/vite/dist/node/chunks/dep-41cf5ffd.js
+index ebb430a..e4feb47 100644
+--- a/node_modules/vite/dist/node/chunks/dep-41cf5ffd.js
++++ b/node_modules/vite/dist/node/chunks/dep-41cf5ffd.js
+@@ -11873,7 +11873,7 @@ function isNodeBuiltin(id) {
+     return nodeBuiltins.includes(id);
+ }
+ function isInNodeModules(id) {
+-    return id.includes('node_modules');
++    return id.includes('node_modules') && !id.includes('volview');
+ }
+ function moduleListContains(moduleList, id) {
+     return moduleList?.some((m) => m === id || id.startsWith(withTrailingSlash(m)));
+@@ -44554,7 +44554,6 @@ function globEntries(pattern, config) {
+     return glob(pattern, {
+         cwd: config.root,
+         ignore: [
+-            '**/node_modules/**',
+             `**/${config.build.outDir}/**`,
+             // if there aren't explicit entries, also ignore other common folders
+             ...(config.optimizeDeps.entries
