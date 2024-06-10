@@ -1,0 +1,13 @@
+diff --git a/node_modules/volview/vite.config.ts b/node_modules/volview/vite.config.ts
+index 92273f5..07eecdf 100644
+--- a/node_modules/volview/vite.config.ts
++++ b/node_modules/volview/vite.config.ts
+@@ -10,7 +10,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
+ import { sentryVitePlugin } from '@sentry/vite-plugin';
+ import replace from '@rollup/plugin-replace';
+ 
+-import pkgLock from './package-lock.json';
++import pkgLock from '../../package-lock.json';
+ import { config } from './wdio.shared.conf';
+ 
+ if (pkgLock.lockfileVersion !== 2) {

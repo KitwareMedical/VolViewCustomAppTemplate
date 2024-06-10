@@ -3,22 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "update:core": "node ./customizeUtils/bin/updateCore.mjs",
-    "sync-config": "node ./customizeUtils/bin/syncConfig.mjs",
-    "setup-project": "npm run update:core && npm run sync-config && npm install",
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "patch-package && node ./customizeUtils/scripts/postinstall.mjs"
   },
   "license": "Apache-2.0",
   "type": "module",
   "dependencies": {
-    "glob": "^10.3.4",
-    "simple-git": "^3.19.1"
+    "patch-package": "^8.0.0",
+    "volview": "github:Kitware/VolView#9e650be"
   },
   "devDependencies": {
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
+    "@npmcli/arborist": "^7.5.2",
+    "glob": "^10.4.1",
+    "ts-node": "^10.9.2",
     "vite": "^4.4.9"
   }
 }

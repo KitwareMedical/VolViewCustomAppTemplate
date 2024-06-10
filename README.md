@@ -4,8 +4,8 @@ This custom app template uses file overrides to customize a webapp built using V
 
 ## Getting Started
 
-1. Edit `custom-app.config.js` to configure this custom template. If you are customizing VolView, you can leave it as-is.
-2. Run `npm install && npm run setup-project` to checkout VolView and configure the project configuration.
+1. Edit `package.json` to configure the version of "volview" that you want to customize.
+2. Run `npm install`.
 
 Once everything has been installed, you can look inside `app/` for a sample file override, which updates some configuration keys.
 
@@ -23,8 +23,11 @@ Imports can be classified into 3 types: override-to-override, override-to-core, 
 - override-to-core: override files can import core files, even if there is an override file for that core file. This allows override files to extend core files merely by importing.
 - core-to-core: core files importing other core files works as-is, unless an override file is present in the override directory.
 
-## Troubleshooting and Technical Details
+## Targeting a different project name + repo
 
-The target customization app is checked out and added as a git submodule. The "coreDir" key in `custom-app.config.js` determines where this submodule resides.
-
-If the submodule ever gets out of sync (e.g. with a dirty tree), remove all changes in the submodule. The submodule is intended to be read-only, as the override directory is where you should make changes.
+This repo by default customizes the "volview" project pointed to in `package.json`, with an override folder called `app/`.
+If you are interested in renaming the customization target or the override folder, here's what you need to change.
+- Edit the package name "volview" in `package.json`.
+- Edit `customizeUtils/custom-app.config.cjs` with the new package name and/or override folder.
+- Edit `tsconfig.json` to change instances of "volview" if you've changed the package name, and "app" if you've changed the override folder.
+- Edit `patches/vite*.patch` to change instances of "volview" if you've changed the package name.
