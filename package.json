@@ -12,7 +12,7 @@
   "type": "module",
   "dependencies": {
     "patch-package": "^8.0.0",
-    "volview": "github:Kitware/VolView#9e650be"
+    "volview": "github:Kitware/VolView#2e361bf"
   },
   "devDependencies": {
     "@npmcli/arborist": "^7.5.2",
