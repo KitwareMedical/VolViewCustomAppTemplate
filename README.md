@@ -1,4 +1,4 @@
-# Custom VolView Template
+# VolView Custom Application Template
 
 This custom app template uses file overrides to customize a webapp built using Vite.
 
