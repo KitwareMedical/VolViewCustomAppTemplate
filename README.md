@@ -1,6 +1,11 @@
 # VolView Custom Application Template
 
-This custom app template uses file overrides to customize a webapp built using Vite.
+This repository provides a template for starting the development of custom VolView applications.
+
+[VolView](https://kitware.github.io/VolView/#what-is-volview) is an open source radiological viewer
+developed for clinical professionals.
+
+This template utilizes Vite and file overrides to enable easy customization.
 
 > [!WARNING]
 > This project is provided "as-is" and is actively being developed. Backward compatibility is
