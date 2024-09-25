@@ -2,6 +2,10 @@
 
 This custom app template uses file overrides to customize a webapp built using Vite.
 
+> [!WARNING]
+> This project is provided "as-is" and is actively being developed. Backward compatibility is
+> not guaranteed, and the API or functionality may change without prior notice between versions.
+
 ## Getting Started
 
 1. Clone this repo: `git clone https://github.com/KitwareMedical/VolViewCustomAppTemplate.git`
