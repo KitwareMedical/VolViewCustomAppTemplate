@@ -4,8 +4,9 @@ This custom app template uses file overrides to customize a webapp built using V
 
 ## Getting Started
 
+1. Clone this repo: `git clone https://github.com/KitwareMedical/VolViewCustomAppTemplate.git`
 1. Edit `package.json` to configure the version of "volview" that you want to customize.
-2. Run `npm install`.
+1. Run `npm install`.
 
 Once everything has been installed, you can look inside `app/` for a sample file override, which updates some configuration keys.
 
