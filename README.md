@@ -42,6 +42,14 @@ If you are interested in renaming the customization target or the override folde
 - Edit `tsconfig.json` to change instances of "volview" if you've changed the package name, and "app" if you've changed the override folder.
 - Edit `patches/vite*.patch` to change instances of "volview" if you've changed the package name.
 
+## Contributing
+
+We welcome contributions through Pull Requests.
+
+> [!TIP]
+> Due to limited continuous integration infrastructure, we recommend that developers carefully
+> describe their changes and ensure thorough testing before submitting.
+
 ## License
 
 It is covered by the Apache License, Version 2.0.
