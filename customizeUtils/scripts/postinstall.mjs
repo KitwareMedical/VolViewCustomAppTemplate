@@ -1,12 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Arborist from '@npmcli/arborist';
 import CustomizeConfig from '../custom-app.config.cjs';
+import * as fs from 'fs';
 
-function depMapToPkgSpec(map) {
-  return Object.entries(map).reduce(
-    (add, [dep, version]) => [...add, `${dep}@${version}`],
-    []
-  );
+function readPackageJson(file) {
+  return JSON.parse(fs.readFileSync(file));
+}
+
+function packageInDeps(name, pkgJson) {
+  return name in pkgJson.dependencies || name in pkgJson.devDependencies;
+}
+
+function depMapToPkgSpec(map, filterFn = () => true) {
+  return Object.entries(map)
+    .filter(filterFn)
+    .reduce((add, [dep, version]) => [...add, `${dep}@${version}`], []);
 }
 
 async function getDependenciesToInstall(pkgName) {
@@ -23,9 +31,14 @@ async function getDependenciesToInstall(pkgName) {
   }
 
   const [pkg] = pkgs;
+  const PackageJson = readPackageJson('package.json');
+  const filterFn = ([name]) => !packageInDeps(name, PackageJson);
   return {
-    dependencies: depMapToPkgSpec(pkg.target.package.dependencies),
-    devDependencies: depMapToPkgSpec(pkg.target.package.devDependencies),
+    dependencies: depMapToPkgSpec(pkg.target.package.dependencies, filterFn),
+    devDependencies: depMapToPkgSpec(
+      pkg.target.package.devDependencies,
+      filterFn
+    ),
   };
 }
 
@@ -34,7 +47,7 @@ async function installPackages(packages, saveType = null) {
     auditLevel: null,
     add: packages,
     saveType,
-    save: true,
+    save: false,
   };
 
   await new Arborist(opts).reify(opts);
@@ -43,7 +56,7 @@ async function installPackages(packages, saveType = null) {
 async function installDependencies() {
   const { targetDependency: targetPkg } = CustomizeConfig;
 
-  const { dependencies, devDependencies } = await getDependenciesToInstall(
+  let { dependencies, devDependencies } = await getDependenciesToInstall(
     targetPkg
   );
 

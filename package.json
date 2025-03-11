@@ -12,12 +12,12 @@
   "type": "module",
   "dependencies": {
     "patch-package": "^8.0.0",
-    "volview": "github:Kitware/VolView#2e361bf"
+    "volview": "github:Kitware/VolView#1f3102a"
   },
   "devDependencies": {
     "@npmcli/arborist": "^7.5.2",
     "glob": "^10.4.1",
     "ts-node": "^10.9.2",
-    "vite": "^4.5.3"
+    "vite": "4.5.3"
   }
 }
